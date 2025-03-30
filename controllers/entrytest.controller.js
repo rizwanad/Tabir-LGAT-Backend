@@ -43,6 +43,8 @@ export const getQuizByTopic = async (req, res) => {
       if (!response.data || !response.data.sections) {
         return errorResponse(res, "Invalid response from question generator API", 500);
       }
+
+
       const formattedQuestions = [];
 
     response.data.sections.forEach(section => {
@@ -58,7 +60,8 @@ export const getQuizByTopic = async (req, res) => {
             text: option.option_text
           })),
           correctAnswer: question.correct_answer,
-          section: section.section_name
+          section: section.section_name,
+          section_id:section.section_id
         });
       });
     });
@@ -142,7 +145,7 @@ export const submitQuiz = async (req, res) => {
           }
         }
       );
-console.log("Testing Response:", evaluationResponse);
+      console.log("Testing Response:", evaluationResponse);
 
 
       const analysisResponse = await axios.post(
