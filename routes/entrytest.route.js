@@ -9,7 +9,8 @@ import {
 const entryTestRouter = Router();
 
 entryTestRouter.get("/topics", getTopics);
-entryTestRouter.get("/:topicId", getQuizByTopic);
+// entryTestRouter.get("/:topicId", getQuizByTopic);
+entryTestRouter.get("/", getQuizByTopic);
 entryTestRouter.post("/validate-code", validatePurchaseCode);
 entryTestRouter.post("/submit", submitQuiz);
 

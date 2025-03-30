@@ -25,17 +25,17 @@ export const getTopics = async (req, res) => {
  */
 export const getQuizByTopic = async (req, res) => {
   try {
-    const { topicId } = req.params;
-    const topic = await Topic.findById(topicId);
+    // const { topicId } = req.params;
+    // const topic = await Topic.findById(topicId);
 
-    if (!topic) {
-      return errorResponse(res, "Topic not found", 404);
-    }
+    // if (!topic) {
+    //   return errorResponse(res, "Topic not found", 404);
+    // }
 
     // const questions = await Question.find({ topic: topicId });
 
       // const { count = 5 } = req.query;
-      const count = 5
+      const count = 100
 
       // Fetch random questions from the external API
       const response = await axios.get(`${PYTHON_BACKEND_API}/random-test?questions=${count}`);
@@ -129,9 +129,6 @@ export const submitQuiz = async (req, res) => {
       await purchaseCodeDoc.save();
     }
 
-    console.log("Evaluation Response:", test_id,
-      sections);
-
     try {
       const evaluationResponse = await axios.post(
         `${PYTHON_BACKEND_API}/evaluate-test`,
@@ -145,7 +142,6 @@ export const submitQuiz = async (req, res) => {
           }
         }
       );
-      console.log("Testing Response:", evaluationResponse);
 
 
       const analysisResponse = await axios.post(
