@@ -7,7 +7,7 @@ services:
       dockerfile: Dockerfile
     container_name: nodejs-app
     ports:
-      - "3000:3000"
+      - "4000:3000"
     env_file:
       - .env.production.local
     depends_on:
