@@ -28,6 +28,7 @@ services:
     restart: unless-stopped
     networks:
       - app-network
+    command: mongod --replSet replicaSet01 --bind_ip_all
 
 networks:
   app-network:

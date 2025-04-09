@@ -8,7 +8,10 @@ if(!DB_URI){
 
 const connectToDatabase = async ()=>{
   try {
-    await mongoose.connect(DB_URI);
+    await mongoose.connect(DB_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true
+    });
   } catch (error) {
     console.error('Error connecting to database', error);
     process.exit(1);
